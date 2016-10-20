@@ -20,19 +20,9 @@ class RecordMoviesRepository extends \Doctrine\ORM\EntityRepository
      */
     public function addRecordMovies($title, $realisator = null)
     {
-        /**
-         * recordMovie
-         * Instancie la classe RecordMovies dans la variable $recordMovie
-         * (default value: new RecordMovies($title, $realisator))
-         * @var mixed
-         * @access public
-         */
         $recordMovie = new RecordMovies($title, $realisator);
         $this->_em->persist($recordMovie);
         $this->_em->flush();
-        /**
-         * Retourne l'identifiant de l'entité enregistrée
-         */
         return $recordMovie->getId();
     }
 
@@ -46,59 +36,29 @@ class RecordMoviesRepository extends \Doctrine\ORM\EntityRepository
      */
     public function getByDates($from, $to)
     {
-        /**
-         * fromDate
-         * (default value: null)
-         * @var mixed
-         * @access public
-         */
         $fromDate = null;
-        /**
-         * toDate
-         * (default value: null)
-         * @var mixed
-         * @access public
-         */
         $toDate = null;
-        /**
-         * Test si le retour de la fonction ne renvoie pas false
-         */
         if ($this->createDate($from) != false)
         {
             $fromDate = $this->createDate($from);
         }
-        /**
-         * Retourne un code erreur en cas de problème
-         */
         else
         {
             return "-1";
         }
-        /**
-         * Test si le retour de la fonction ne renvoie pas false
-         */
         if ($this->createDate($to) != false)
         {
             $toDate = $this->createDate($to);
         }
-        /**
-         * Retourne un code erreur en cas de problème
-         */
         else
         {
             return "-2";
         }
-        /**
-         * Requête pour récupérer l'ensemble des résultats entre les deux dates
-         */
         $qb = $this->_em->createQueryBuilder()
                    ->select('rm')
                    ->from('AppBundle:RecordMovies','rm')
                    ->where('rm.from >= :from and rm.to <= :to')
                    ->setParameters(array('from' => $fromDate, 'to' => $toDate));
-        /**
-         * Retourne l'ensemble des résultats
-         */
         return $qb->getQuery()->getResult();
     }
 
@@ -107,30 +67,16 @@ class RecordMoviesRepository extends \Doctrine\ORM\EntityRepository
      * Créer une objet DateTime par rapport à entier
      * @access private
      * @param mixed $arg
-     * @return DateTime ou false
+     * @return void
      */
     private function createDate($arg)
     {
-        /**
-         * Test si le paramètre est bien un entier
-         */
         if (is_int($arg))
         {
-            /**
-             * Initialise la variable à partir des segments de chaîne
-             */
             $date = substr($arg, 0, 4) .'-'. substr($arg, 4,2) .'-'. substr($arg, 6,2);
-            /**
-             * Retourne un DateTime initialisé avec la chaîne précédente
-             */
             return new \DateTime($date);
         }
-        /**
-         * Retourne false si le paramètre n'est pas un entier
-         */
         else
-        {
             return false;
-        }
     }
 }
