@@ -1,0 +1,19 @@
+api_getallvideos:
+    pattern:    /videos
+    defaults:   { _controller: "AppBundle:Api:getAllVideos"}
+    methods:    GET
+
+api_getvideobyid:
+    pattern:    /video/{id}
+    defaults:   { _controller: "AppBundle:Api:getVideoById"}
+    methods:    GET
+
+api_getvideosbyrealisator:
+    pattern:    /videos?realisator={realisator}
+    defaults:   { _controller: "AppBundle:Api:getVideosByRealisator"}
+    methods:    GET
+
+api_getvideosbetweendates:
+    pattern:    /videos?from={from}&to={to}
+    defaults:   { _controller: "AppBundle:Api:getVideosBetweenDates"}
+    methods:    GET

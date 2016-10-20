@@ -113,7 +113,7 @@ class RecordMovies
      */
     public function getDate()
     {
-        return $this->date;
+        return $this->date->format("Y-m-d H:i:s");
     }
 
     /**
@@ -161,7 +161,8 @@ class RecordMovies
      */
     public function getFrom()
     {
-        return $this->from;
+        if (!empty($this->from))
+            return $this->from->format("Y-m-d");
     }
 
     /**
@@ -185,7 +186,8 @@ class RecordMovies
      */
     public function getTo()
     {
-        return $this->to;
+        if (!empty($this->to))
+            return $this->to->format("Y-m-d");
     }
 
 
