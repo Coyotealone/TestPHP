@@ -39,43 +39,34 @@ class AddDataCommand extends ContainerAwareCommand
     {
         /**
          * output- Affichage de deux lignes
-         *
          * @var mixed
          * @access public
          */
         $output->writeln(['Record Movies Add', '',]);
         /**
          * Initialisation de la variable $title avec l'argument 'title' passé en ligne de commande
-         *
          * (default value: $input->getArgument('title'))
-         *
          * @var string
          * @access public
          */
         $title = $input->getArgument('title');
         /**
          * Initialisation de la variable $realisator avec l'argument 'realisator' passé en ligne de commande
-         *
          * (default value: $input->getArgument('realisator'))
-         *
          * @var string
          * @access public
          */
         $realisator = $input->getArgument('realisator');
         /**
          * em
-         *
          * (default value: $this->getContainer()->get('doctrine')->getManager())
-         *
          * @var string
          * @access public
          */
         $em = $this->getContainer()->get('doctrine')->getManager();
         /**
     	 * Ajout d'une fiche de film à partir des deux paramétres $title et $realisator
-    	 *
     	 * (default value: $em->getRepository('AppBundle:RecordMovies')->addRecordMovies($title, $realisator))
-    	 *
     	 * @var string
     	 * @access public
     	 * @return Retourne id de l'entité créée si tout c'est bien passé sinon un message d'avertissement
@@ -85,7 +76,7 @@ class AddDataCommand extends ContainerAwareCommand
     	{
             /**
              * output-
-             *
+             * Retourne le contenu de ce qui a été enregistré en base
              * @var mixed
              * @access public
              */
@@ -93,6 +84,13 @@ class AddDataCommand extends ContainerAwareCommand
         }
         else
         {
+
+            /**
+             * output-
+             * Retourne un message d'erreur
+             * @var mixed
+             * @access public
+             */
             $output->writeln('Une erreur est survenue');
         }
     }
