@@ -46,14 +46,14 @@ class RecordMovies
     /**
      * Date de début
      * @var \Date
-     * @ORM\Column(name="from", type="date", nullable=true)
+     * @ORM\Column(name="from_date", type="date", nullable=true)
      */
     private $from;
 
     /**
      * Date de fin
      * @var \Date
-     * @ORM\Column(name="to", type="date", nullable=true)
+     * @ORM\Column(name="to_date", type="date", nullable=true)
      */
     private $to;
 
@@ -187,4 +187,20 @@ class RecordMovies
     {
         return $this->to;
     }
+
+
+    /**
+     * __construct function.
+     * Initialise l'entité avec deux paramétres
+     * @access public
+     * @param string $title
+     * @param string $realisator
+     * @return void
+     */
+    public function __construct($title, $realisator)
+    {
+        $this->setTitle($title);
+        $this->setRealisator($realisator);
+    }
+
 }
