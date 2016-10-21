@@ -71,8 +71,8 @@ class RecordMoviesEntityTest extends WebTestCase
         $recordMovie1Check = $em->getRepository('AppBundle:RecordMovies')->findOneById($recordMovie1->getId());
         $recordMovie2Check = $em->getRepository('AppBundle:RecordMovies')->findOneById($recordMovie2->getId());
         /** Vérification que les entités créées correspondent bien aux ids récupérés */
-        $this->assertEquals($recordMovie1Check, $recordMovie1->getId());
-        $this->assertEquals($recordMovie2Check, $recordMovie2->getId());
+        $this->assertEquals($recordMovie1Check->getId(), $recordMovie1->getId());
+        $this->assertEquals($recordMovie2Check->getId(), $recordMovie2->getId());
     }
 
     /**
@@ -92,7 +92,7 @@ class RecordMoviesEntityTest extends WebTestCase
         $this->assertEquals($recordMovieCheck, $recordMovie);
 
         /** Création d'une entité RecordMovies avec un paramètre */
-        $recordMovie = $em->getRepository('AppBundle:RecordMovies')->addRecordMovies("Titre film Test sans réalisateur");
+        $recordMovie = $em->getRepository('AppBundle:RecordMovies')->addRecordMovies("Titre film Test sans réalisateur", null);
         /** Récupération de l'identifiant de l'entité créée */
         $recordMovieCheck = $em->getRepository('AppBundle:RecordMovies')->findOneById($recordMovie);
         /** Vérification que l'entité correpond à celle créé */
