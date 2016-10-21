@@ -80,11 +80,10 @@ class AddDataCommand extends ContainerAwareCommand
              * @var mixed
              * @access public
              */
-            $output->writeln('Fiche du film ajoutée ! '.$title.' '.$realisator.' '.$result);
+            $output->writeln('Fiche du film ajoutée ! '.$title.' '.$realisator.' '.$result->getId());
         }
         else
         {
-
             /**
              * output-
              * Retourne un message d'erreur

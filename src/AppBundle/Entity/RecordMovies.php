@@ -199,7 +199,7 @@ class RecordMovies
      * @param string $realisator
      * @return void
      */
-    public function __construct($title, $realisator)
+    public function __construct($title, $realisator=null)
     {
         $this->setTitle($title);
         $this->setRealisator($realisator);

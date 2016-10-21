@@ -16,14 +16,14 @@ class RecordMoviesRepository extends \Doctrine\ORM\EntityRepository
      * @access public
      * @param string $title
      * @param string $realisator (default: null)
-     * @return id de l'entity créée
+     * @return l'entity créée
      */
-    public function addRecordMovies($title, $realisator = null)
+    public function addRecordMovies($title, $realisator)
     {
         $recordMovie = new RecordMovies($title, $realisator);
         $this->_em->persist($recordMovie);
         $this->_em->flush();
-        return $recordMovie->getId();
+        return $recordMovie;
     }
 
     /**
@@ -65,13 +65,13 @@ class RecordMoviesRepository extends \Doctrine\ORM\EntityRepository
     /**
      * createDate function.
      * Créer une objet DateTime par rapport à entier
-     * @access private
+     * @access public
      * @param mixed $arg
      * @return void
      */
-    private function createDate($arg)
+    public function createDate($arg)
     {
-        if (is_int($arg))
+        if (is_int($arg) and strlen($arg) == 8)
         {
             $date = substr($arg, 0, 4) .'-'. substr($arg, 4,2) .'-'. substr($arg, 6,2);
             return new \DateTime($date);
