@@ -1,3 +1,8 @@
 AppBundle_api:
     resource: "@AppBundle/Resources/config/routing/api.yml"
     prefix:    /api
+
+AppBundle_index:
+    path:    /
+    defaults:   { _controller: "AppBundle:Main:index"}
+    methods:    GET
