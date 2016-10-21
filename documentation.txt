@@ -1,0 +1,8 @@
+Après avoir cloné le dossier git
+Lancer les commandes
+	1 : composer update
+	2 : php app/console doctrine:database:generate
+	3 : php app/console doctrine:database:update --force
+
+Lancer les tests si phpunit est installé sur la machine
+	phpunit -c app
